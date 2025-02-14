@@ -1,0 +1,58 @@
+.brand{
+    font-size: 30px;
+    font-weight: 600;
+    font-family: "Mona Sans", serif;
+  font-optical-sizing: auto;
+  cursor: pointer;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+.nav-item{
+    font-size: 18px;  
+    font-family: "Quicksand", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    cursor: pointer;
+}
+ul li {
+    position: relative;
+    overflow: hidden;
+    transition: .3s;
+  }
+  ul li:before {
+    content: "";
+    position: absolute;
+    inset: calc(100% - 3px) 0 0 0; 
+    background: #ce4f20; 
+    scale: 0 1;
+    transition: .3s, translate 0s .3s;
+  }
+  ul li.no-hover:before {
+    display: none;
+}
+  ul:hover li:before {
+    scale: 1;
+  }
+  ul li:hover:before {
+    translate: 0;
+    transition: .3s;
+  }
+  ul:hover li:has(~ li:hover):before {
+    translate: 100% 0;
+    transition: .2s .2s,scale 0s .4s;
+  }
+  ul:hover li:hover ~ li:before {
+    translate: -100% 0;
+    transition: .2s .2s,scale 0s .4s;
+  }
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: white;
+  }
+  

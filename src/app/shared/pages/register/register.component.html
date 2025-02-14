@@ -1,0 +1,50 @@
+<div class="c1">
+    <div class="overlay"></div>
+    <div class="container w-75 shadow">
+        <div class="row">
+            <div class="col-lg-6 c2 p-5">
+                <h3 >Sign Up</h3>
+                <form [formGroup]="signUpform">
+                    <div class="form-floating mb-3 mt-2">
+                        <input formControlName="username" type="text" name="username" class="form-control" id="floatingInput" placeholder="Username">
+                        <label for="floatingInput">User name</label>
+                        <!-- error message -->
+                        <div *ngIf="signUpform.get('username')?.errors&&signUpform.get('username')?.touched">
+                          <p class="text-danger">please enter a valid username</p>
+                        </div>
+      
+                      </div>
+      
+                    <div class="form-floating mb-3">
+                        <input formControlName="email" type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                        <!-- error message -->
+                        <div *ngIf="signUpform.get('email')?.errors&&signUpform.get('email')?.touched">
+                          <p class="text-danger">please enter a valid email</p>
+                        </div>
+                      </div>
+      
+                      <div class="form-floating">
+                        <input formControlName="password" type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                        <!-- error message -->
+                        <div *ngIf="signUpform.get('password')?.errors&&signUpform.get('password')?.touched">
+                          <p class="text-danger">please include letters and numbers only</p>
+                        </div>
+                      </div>
+        
+                    </form>             
+       <div class="mt-3">
+                      <button class="btn w-100" (click)="register()">Signup</button>
+      
+                    </div>
+                    <p class="mt-1 text-center">Already registered? <a style="text-decoration: none; color: rgb(83, 82, 82);" routerLink="/login"
+                      >Login</a></p>
+            </div>
+            <div class="col-lg-6 p-3">
+                <img src="https://images.pexels.com/photos/994234/pexels-photo-994234.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+            </div>
+           
+        </div>
+    </div>
+</div>

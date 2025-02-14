@@ -1,0 +1,31 @@
+.container{
+    padding-top: 130px;
+}
+h3{
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+.brand{
+    text-transform: uppercase;
+}
+.card{
+    font-family: "Quicksand", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    border: none;
+}
+.card img{
+    transition: transform 0.3s ease;
+}
+
+.card img:hover{
+    transform: scale(1.07);
+}
+.len{
+    font-family: "Quicksand", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 500; 
+}

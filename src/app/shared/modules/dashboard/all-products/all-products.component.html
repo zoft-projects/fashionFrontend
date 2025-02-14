@@ -1,0 +1,141 @@
+<div class="container-fluid">
+    <div class="row">
+        
+        <div class="col-lg-12  p-3">
+            <div class=" p-3 b2">
+                <input type="text" placeholder="Search for Brands" [(ngModel)]="searchData">
+                <div class="d-flex justify-content-between  mt-3">
+                    <button class="b1" routerLink="/dashboard"><--</button>
+                    <app-add-products></app-add-products>
+ 
+                </div>
+                <div class="container">
+                    <div class="row" *ngIf="allProducts.length > 0">
+                        <div class="col-lg-4" *ngFor="let product of allProducts | search : searchData | paginate: { itemsPerPage: 6, currentPage: p }">
+                            <div class="card mb-3" style="max-width: 540px;">
+                                <div class="row g-0">
+                                  <div class="col-md-4 p-3">
+                                    <img [src]="'data:' + product.image.type + ';base64,' + arrayBufferToBase64(product.image.data.data)" class="img-fluid rounded-start" alt="...">
+                                  </div>
+                                  <div class="col-md-8">
+                                    <div class="card-body">
+                                      <h5 class="card-title">{{(product.name | slice:0:18) +'...' }}</h5>
+                                      <p >{{(product.description | slice:0:24)+' ...' }}</p>
+                                      <a class="brand" style="text-decoration: none;color: rgb(81, 79, 79);">{{product.brand}}</a>
+                                      <div class="d-flex justify-content-between">
+                                        <p style="font-weight: 500;">Price: Rs.{{product.price}}</p>
+                                        <p>{{product.rating}} <i class="fa-solid fa-star" style="color: #f2df07;"></i></p>
+                                      </div>
+                                      <hr *ngIf="routCheckService.hasRole('super-admin','admin')">
+                                      <div class="d-flex justify-content-end">
+                                        <i class="fa-solid fa-pen-to-square i1 me-3" (click)="updateModal(product)" *ngIf="routCheckService.hasRole('super-admin','admin')"></i>
+                                        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h1 class="modal-title fs-5" id="exampleModalLabel">Update Product</h1>
+                                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                  <form action=""   >
+                                                    <div class="container">
+                                                        <div class="row mt-2">
+                                                            <div class="col-lg-6">
+                                                                <div>
+                                                                    <label for="name">Name:</label>
+                                                                    <input id="name" [(ngModel)]="selectedProduct.name" class="form-control" name="productName"/>
+                                                                  </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div>
+                                                                    <label for="brand">Brand:</label>
+                                                                    <input id="brand" [(ngModel)]="selectedProduct.brand" class="form-control" name="brand"/>
+                                                                  </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mt-2">
+                                                            <div class="col-lg-6">
+                                                                <div>
+                                                                    <label for="category">Category:</label>
+                                                                    <input id="category" [(ngModel)]="selectedProduct.category" class="form-control" name="category"/>
+                                                                  </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div>
+                                                                    <label for="description">Description:</label>
+                                                                    <textarea id="description" [(ngModel)]="selectedProduct.description" class="form-control" name="description"></textarea>
+                                                                  </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mt-2">
+                                                            <div class="col-lg-6">
+                                                                <div>
+                                                                    <label for="rating">Rating:</label>
+                                                                    <input id="rating" [(ngModel)]="selectedProduct.rating" type="number" class="form-control" name="rating"/>
+                                                                  </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div>
+                                                                    <label for="price">Price:</label>
+                                                                    <input id="price" [(ngModel)]="selectedProduct.price" type="text" class="form-control" name="price"/>
+                                                                  </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mt-2 mb-2">
+                                                            <div class="col-lg-6">
+                                                                <div>
+                                                                    <label for="image">Image:</label>
+                                                                    <img 
+                                                                    *ngIf="imagePreview" [src]="imagePreview" alt="Product Image" 
+                                                                    class="img-fluid" 
+                                                                    style="max-height: 150px;"
+                                                                  >                                                               
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="mb-3">
+                                                                    <label for="productImage" class="form-label">Change Image :</label>
+                                                                    <input 
+                                                                      type="file" 
+                                                                      id="productImage" 
+                                                                      (change)="onImageChange($event)" 
+                                                                      class="form-control"
+                                                                      accept="image/*"
+                                                                    >
+                                                                  </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                  </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary px-5" data-bs-dismiss="modal">Close</button>
+                                                  <button type="button" (click)="updateProduct()" class="btn btn-primary px-5" style="background-color:  #e4744b;border: 0;">Save changes</button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                                                          
+                                        <i class="fa-solid fa-trash i1 text-danger" (click)="deleteProduct(product._id)" *ngIf="routCheckService.hasRole('super-admin')"></i>
+                                        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                          </div>
+                                
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              
+                        </div> 
+                    </div>
+                    <div *ngIf="allProducts.length === 0" class="text-center">
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+                    </div>
+                </div> 
+            </div>       
+        </div>
+    </div>
+</div>

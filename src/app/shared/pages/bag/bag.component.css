@@ -1,0 +1,66 @@
+.container{
+    padding-top: 130px;
+    margin-bottom: 450px;
+}
+h3,.items{
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.card{
+    border-radius: 15px;
+    border: 1px solid rgb(237, 235, 235);
+    line-height: 15px;
+    font-family: "Quicksand", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+.b1{
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 11px;
+}
+.category{
+    text-transform: uppercase;
+}
+.price{
+    font-weight: 700;
+}
+.c1{
+    border-radius: 15px;
+    border: 1px solid rgb(237, 235, 235);
+    font-family: "Quicksand", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    line-height: 15px;
+}
+.shipping{
+    color: rgb(9, 195, 9);
+}
+.total{
+    font-weight: 700;
+}
+.p1{
+    font-weight: 500;
+}
+.b2{
+    width: 100%;
+    background-color: pink;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+}
+h2{
+    font-family: "Quicksand", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  
+}
+.go{
+    text-decoration: underline;
+    cursor: pointer;
+}

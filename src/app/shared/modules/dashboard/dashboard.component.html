@@ -1,0 +1,145 @@
+<div class="container-fluid">
+    <div class="row ">
+      
+        <div class="col-lg-12 p-3">
+            <div class="c2 p-3">
+              <div class="d-flex justify-content-between">
+                  <h3>Dashboard</h3>
+                  <div class="position-relative" *ngIf="routCheckService.hasRole('super-admin')">
+                    <i class="fa-solid fa-bell fa-2xl mt-3 me-2" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                    <span 
+                    class="position-absolute  start-100 translate-middle badge rounded-pill bg-danger"
+                    *ngIf="notifications.length > 0">
+                    {{ notifications.length }}
+                  </span>
+                  </div>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="read()"></button>
+                        </div>
+                        <div class="modal-body">
+                          <div *ngIf="notifications.length>0">
+                            <div class="x1 px-2 mb-1" *ngFor="let notification of notifications">
+                                <p>User with ID <strong>#{{ notification.order.user }}</strong> has placed an order.</p>
+                            </div>
+                          </div>
+                          <p *ngIf="notifications.length === 0">No notifications to display.</p>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+              </div>               
+              <hr>
+                <div class="d-flex justify-content-end dash">
+                  <button class="but" routerLink="">Home</button>
+                  <button class="but" routerLink="allProducts" >Products</button>
+                  <button class="but" routerLink="all-orders" *ngIf="routCheckService.hasRole('super-admin')">Orders</button>
+                  <button class="but" (click)="logout()">Log Out</button>
+                </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-lg-7">
+                <div class="row mb-4">
+                  <div class="col-lg-4">
+                      <div class="a1 p-3 shadow">
+                        <div class="d-flex justify-content-between align-items-center">                                   
+                          <p><strong>Products</strong></p> 
+                          <i class="fa-solid fa-ellipsis fa-lg " routerLink="allProducts"></i>
+                        </div>                                  
+                      <div class="d-flex justify-content-between align-items-center">
+                          <h3>{{allProducts.length}}</h3>
+                          <p class="p1 mt-2">As of  <strong>{{ currentMonth }} 2025</strong> </p>
+                    </div>                             
+                    </div>
+                  </div>
+                   <div class="col-lg-4">
+                      <div class="a1 p-3 shadow">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <p><strong>Orders</strong></p>
+                          <i class="fa-solid fa-ellipsis fa-lg " routerLink="all-orders"></i> 
+                        </div>                                
+                        <div class="d-flex justify-content-between align-items-center">
+                          <h3>{{orders.length}}</h3>
+                          <p class="p1 mt-2 ">As of  <strong>{{ currentMonth }} 2025</strong> </p>
+                       </div>                        
+                      </div>
+                   </div>
+                  <div class="col-lg-4">
+                    <div class="a1 p-3 shadow">
+                  <div class="d-flex justify-content-between align-items-center">
+                        <p><strong>Users</strong></p>
+                        <i class="fa-solid fa-ellipsis fa-lg "></i> 
+                    </div>                             
+                  <div class="d-flex justify-content-between align-items-center">
+                      <h3>{{allUsers.length}}</h3>
+                      <p class="p1 mt-2 ">As of  <strong>{{ currentMonth }} 2025</strong> </p>  
+                    </div>                          
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-7">
+                    <app-bar-chart></app-bar-chart>
+
+                  </div>
+                  <div class="col-lg-5">
+                    <app-donut-chart></app-donut-chart>
+                  </div>
+                </div>
+
+
+              </div>
+              <div class="col-lg-5">
+                <app-log-chart></app-log-chart>
+                <div class=" shadow c3 mt-3">
+                  <h5><strong> User details</strong></h5>
+                  <hr>
+                 <div class="table-container">
+                    <table class="table  table-striped text-center">
+                     <thead>
+                       <tr>
+                         <th>#</th>
+                         <th>Username</th>
+                         <th>Email</th>
+                         <th *ngIf="routCheckService.hasRole('super-admin')">Admin Status</th>
+                         <th *ngIf="routCheckService.hasRole('super-admin')"></th>
+                       </tr>
+                     </thead>
+                     <tbody>
+                       <tr *ngFor="let user of allUsers; let i = index">
+                         <td>{{ i + 1 }}</td>
+                         <td>{{ user.username }}</td>
+                         <td>{{ user.email }}</td>
+                         <td *ngIf="routCheckService.hasRole('super-admin')"><div 
+                           
+                           (click)="toggleAdmin(user._id)" 
+                           >
+                           <i class="fa" 
+                           [ngClass]="{
+                             'fa-toggle-on':  user.role === 'admin', 
+                             'fa-toggle-off': user.role === 'user',
+                             'text-success': user.role === 'admin', 
+                             'text-danger': user.role === 'user'
+                           }"></i>
+                         </div>
+                       </td>
+                     
+                         <td *ngIf="routCheckService.hasRole('super-admin')"><button type="button" (click)="deleteUser(user._id)" class="btn btn-outline-secondary"><i class="fa-solid fa-trash"></i></button></td>
+                       </tr>
+                     </tbody>
+                   </table>
+
+               </div>                   
+               </div>
+
+              </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

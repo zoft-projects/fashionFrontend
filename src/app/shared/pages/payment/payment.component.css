@@ -1,0 +1,32 @@
+.container{
+    padding-top: 130px;
+    margin-bottom: 300px;
+    font-family: "Quicksand", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+h1{
+    margin-bottom: 150px;
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+label{
+    font-weight: 600;
+}
+.c1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button{
+        width: 40%;
+        background-color: pink;
+        color: black;
+        border: none;
+        padding: 8px;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: 600;
+    }
+}

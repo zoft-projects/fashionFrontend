@@ -1,0 +1,41 @@
+.container{
+    padding-top: 150px;
+    font-family: "Raleway", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+.go{
+    background-color: rgb(200, 202, 202);
+    color: black;
+    border: none;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+.cont{
+    background-color: pink;
+    color: black;
+    border: none;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+input{
+    width: 100%;
+    padding: 8px;
+    border-radius: 7px;
+    border: 1px solid rgb(217, 214, 214);
+}
+.b1{
+    margin-bottom: 150px;
+}
+h1{
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+input:focus{
+    outline: none;
+    border: 1px solid rgb(217, 214, 214);
+}

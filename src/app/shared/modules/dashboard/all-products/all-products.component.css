@@ -1,0 +1,45 @@
+
+.b2{
+    background-color: rgb(236, 239, 241);
+    border-radius: 15px;
+    height: 95vh;
+}
+input{
+    width: 100%;
+    background-color: rgb(236, 239, 241);
+    padding: 10px;
+    font-size: 25px;
+    border: none;
+    border-bottom: 1px solid gray;
+}
+input:focus {
+    border-bottom: 1px solid gray;
+    outline: none; 
+}
+
+.brand{
+    text-transform: uppercase;
+}
+.fa-spinner{
+    font-size: 50px;
+}
+.i1{
+    font-size: 20px; 
+    margin-top: 2px ;  
+}
+.modal-body{
+    input{
+        font-size: 15px;
+    }
+}
+.b1{
+    all: unset;
+    color: black;
+    font-weight: 700;
+    font-style: normal;
+    padding-inline: 10px;
+    cursor: pointer;
+    font-family: "Quicksand", serif;
+    font-optical-sizing: auto;
+    font-size: 20px;
+}

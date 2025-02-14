@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <h3>User Profile</h3>
+    <div class="row mt-5">
+        <div class="col-lg-4">
+            <div class="c1 p-3">
+                <h4>User Info</h4>
+                <hr>
+                <div class="d-flex align-items-center justify-content-center">
+                    <img [src]="user.image?.data 
+                    ? 'data:' + user.image?.type + ';base64,' + user.image?.data 
+                    : 'https://static.vecteezy.com/system/resources/previews/026/966/960/non_2x/default-avatar-profile-icon-of-social-media-user-vector.jpg'" style="border-radius: 50%;height: 90px;width: 90px;" alt="">
+                </div>
+                <input type="file" hidden id="fileInput" (change)="onFileSelect($event)" />
+                <div class="d-flex">
+                    <p>Name:</p>
+                    <p class="ms-5 mt-1 c2" style="text-transform: capitalize;">{{user.username}}</p>
+                </div>
+                <div class="d-flex">
+                    <p>Email:</p>
+                    <p class="ms-5 mt-1 c2">{{user.email}}</p>
+                </div>
+                <button class="w-100 b1" (click)="triggerFileInput()">Update Profile picture</button>
+                <button class="w-100 mt-2 b2" (click)="updateProfileImage()">Save Changes</button>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="c2 p-3">
+                <h4>Order Info</h4>
+                <hr>
+                <div class="order-container">
+                    <div *ngIf="orders.length > 0; else noOrders">
+                        <div *ngFor="let order of orders">
+                            <div class="c1 p-3 mb-3">
+                                <p><b>Order</b> #{{order._id}}</p>
+                                <p class="status">Status: <span>{{order.status}}</span></p>
+                                <div *ngFor="let item of order.products,let i = index">
+                                    <div class="product-info">
+                                      <p style="font-weight: 500;">{{i+1}}. <span routerLink="/single-view/{{item.product._id}}">{{ item.product.name }}</span></p>
+                                      <p><strong>Quantity: </strong> {{ item.quantity }}</p>
+                                    </div>
+                                </div>
+                                        <div class="d-flex justify-content-between">
+                                          <p ><strong>Total Amount: </strong><span class="amnt">Rs. {{ order.totalPrice }}</span></p>
+                                        <p>Delivered: 
+                                            <span *ngIf="order.status === 'delivered'; else cross">
+                                                <i class="fas fa-check-circle" style="color: green;"></i>
+                                              </span>
+                                              <ng-template #cross>
+                                                <i class="fas fa-times-circle" style="color: red;"></i> 
+                                              </ng-template>
+                                        </p>
+                                        </div>                               
+                                    
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>              
+  <ng-template #noOrders>
+                    <p>No orders found.</p>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

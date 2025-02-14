@@ -1,0 +1,66 @@
+.container{
+    padding-top: 150px;
+    margin-bottom: 200px;
+}
+.c1{
+    border-radius: 15px;
+    border: 3px solid rgb(237, 235, 235);
+    font-family: "Quicksand", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+ 
+}
+h3{
+    font-weight: 600;
+}
+span{
+    font-weight: 700;
+}
+.price{
+    font-weight: 600;
+}
+.category{
+    text-transform: uppercase;
+}
+.c2{
+    border-radius: 15px;
+    border: 1px solid rgb(205, 204, 204);
+    font-family: "Quicksand", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    line-height: 15px;
+}
+.shipping{
+    color: rgb(9, 195, 9);
+}
+.total{
+    font-weight: 700;
+}
+.p1{
+    font-weight: 500;
+}
+.b2{
+    width: 100%;
+    background-color: pink;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+.card{
+    border: none;
+}
+.b3{
+    width: 100%;
+    background-color: rgb(203, 200, 200);
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+#paypal-button-container {
+    display: block;
+    width: 100%; /* Adjust width if necessary */
+    text-align: center; /* Center the button */
+  }
+  

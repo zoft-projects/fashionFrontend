@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg ">
+    <div class="container p-4">
+      <div class="brand" routerLink="/">FASHION</div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto ">
+        <li class="nav-item" *ngIf="isAdmin">
+             <a class="nav-link mx-3" routerLink="/dashboard">DASHBOARD</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-3" routerLink="/">HOME</a>
+        </li>
+          <li class="nav-item">
+            <a class="nav-link mx-3" routerLink="/men">MEN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-3" routerLink="/women">WOMEN</a>
+          </li>
+        
+          <li class="nav-item">
+            <a class="nav-link mx-3" routerLink="/all">ALL</a>
+          </li>
+          <li class="nav-item" routerLink="/bag" (click)="viewBag()">
+            <a class="nav-link mx-3" ><i class="fa-solid fa-bag-shopping" style="color: #0d0d0d;position: relative;"></i>
+              <span class="start-75 translate-middle badge rounded-pill bg-danger " *ngIf="cartCount > 0"  style="position: absolute;font-size: 0.6rem; ">{{ cartCount }}</span></a>
+          </li>
+          <li class="nav-item" *ngIf="!login">
+            <a class="nav-link " routerLink="/profile"><i class="fa-solid fa-circle-user fa-lg" style="color: #0d0d0d;"></i></a>
+          </li>
+          <li class="nav-item mx-3 no-hover" *ngIf="login">
+            <button type="button" class="btn btn-dark" routerLink="/login">SIGN IN</button>
+          </li>
+          <li class="nav-item mx-3 no-hover" *ngIf="!login">
+            <button type="button" class="btn btn-dark" (click)="logout()">SIGN OUT</button>
+          </li>
+        </ul>
+       
+      </div>
+    </div>
+  </nav>

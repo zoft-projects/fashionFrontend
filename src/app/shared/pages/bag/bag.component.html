@@ -1,0 +1,66 @@
+<app-navbar></app-navbar>
+
+<ng-container *ngIf="cartItems$ | async as cartItems; else emptyCart">
+    <div class="container" >
+      <h3>Shopping Bag</h3>
+      <p class="items"> {{ (cartItems$ | async)?.length }} items in the bag</p>
+    
+      <div class="row my-5" *ngIf="cartItems.length > 0; else emptyCart">
+        <div class="col-lg-8">
+          <div >
+            <div class="card mb-3" style="width: 100%;" *ngFor="let item of cartItems">
+              <div class="row g-0">
+                <div class="col-md-2 p-0 d-flex justify-content-center align-items-center">
+                  <img [src]="item.image" class="img-fluid rounded-start" style="height: 120px; width: 100px;" alt="...">
+                </div>
+                <div class="col-md-10 p-0">
+                  <div class="card-body">
+                    <p class="category">{{item.category}}</p>
+                    <h5>{{item.name}}</h5>
+                    <div class="d-flex justify-content-between">
+                      <p>Quantity: {{item.quantity}}</p>
+                      <p class="price">Price: Rs. {{item.price}}</p>
+                    </div>
+                    <button class="b1" (click)="removeCart(item.productId)">Remove</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="col-lg-4 d-flex flex-column">
+          <div class="c1 p-4">
+            <h6>PRICE DETAILS ({{ (cartItems$ | async)?.length }} items)</h6>
+            <hr>
+            <div class="d-flex justify-content-between">
+              <p class="p1">Total MRP:</p>
+              <p class="p1">Rs. {{ cartTotalMrp$ | async }}</p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <p class="p1">Tax:</p>
+              <p class="shipping p1">Rs. 20</p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <p class="p1">Shipping Charge:</p>
+              <p class="shipping p1">Rs. 50</p>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between">
+              <p class="total">Total Price:</p>
+              <p class="total">Rs. {{ cartTotalPrice$ | async }}</p>
+            </div>
+            <button class="b2" (click)="checkOut()">Proceed to CheckOut</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+</ng-container>
+<ng-template #emptyCart>
+    <div class="text-center my-5">
+      <h2>No items in the Cart</h2>
+      <h3 class="go"  routerLink="/all">Go back to Shopping</h3>
+    </div>
+  </ng-template>
+<app-footer></app-footer>

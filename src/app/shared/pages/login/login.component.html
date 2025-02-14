@@ -1,0 +1,40 @@
+<div class="c1">
+    <div class="overlay"></div>
+    <div class="container w-75 shadow">
+        <div class="row">
+            <div class="col-lg-6 p-3">
+                <img src="https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+            </div>
+            <div class="col-lg-6 c2">
+                <h3 >Sign In</h3>
+                <form  [formGroup]="loginForm">
+                    <div class="form-floating mb-3 mt-2">
+                        <input formControlName="email" type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                           <!-- error message -->
+                            <div *ngIf="loginForm.get('email')?.errors&&loginForm.get('email')?.touched">
+                              <p class="text-danger">please enter a valid email</p>
+                             </div>
+                        
+                      </div>
+                      <div class="form-floating">
+                        <input formControlName="password" type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                         <!-- error message -->
+                          <div *ngIf="loginForm.get('password')?.errors&&loginForm.get('password')?.touched">
+                            <p class="text-danger">please include letters and numbers only</p>
+                          </div>
+                        
+                      </div>
+        
+                    </form>             
+                   <div class="mt-3">
+                      <button  class="btn w-100" (click)="login()">Login</button>
+      
+                    </div>
+                    <p class="mt-1 text-center">New user? <a style="text-decoration: none; color: rgb(88, 87, 87);" routerLink="/register"
+                      >Register in here</a></p>
+            </div>
+        </div>
+    </div>
+</div>

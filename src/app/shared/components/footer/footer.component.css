@@ -1,0 +1,24 @@
+.r3{
+    background-color: #ce4f20;
+    padding: 100px;
+    text-align: center;
+    color: white;
+    font-family: "Quicksand", serif;
+    font-optical-sizing: auto;
+}
+.icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: white;
+}
+.r4{
+    background-color: black;
+    color: white;
+    font-family: "Quicksand", serif;
+    font-optical-sizing: auto;
+    padding: 25px;
+    text-align: center;
+    font-weight: 500;
+}
