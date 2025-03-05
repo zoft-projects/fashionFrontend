@@ -34,20 +34,11 @@ export class AllProductsComponent implements OnInit{
     })
   }
 
-  arrayBufferToBase64(buffer: number[]): string {
-    let binary = '';
-    const bytes = new Uint8Array(buffer);
-    const len = bytes.byteLength;
-    for (let i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i]);
-    }
-    return btoa(binary);
-  }
   
   updateModal(product: any) {
     this.selectedProduct = { ...product }; 
     this.imagePreview = product.image
-    ? 'data:' + product.image.type + ';base64,' + this.arrayBufferToBase64(product.image.data.data)
+    ? 'data:' + product.image.type + ';base64,' + product.image.data
     : null; 
   this.selectedImageFile = null;
     const modalElement = document.getElementById('editModal');

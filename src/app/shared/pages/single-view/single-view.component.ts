@@ -47,15 +47,7 @@ export class SingleViewComponent implements OnInit{
     })
   }
 
-    arrayBufferToBase64(buffer: number[]): string {
-    let binary = '';
-    const bytes = new Uint8Array(buffer);
-    const len = bytes.byteLength;
-    for (let i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i]);
-    }
-    return btoa(binary);
-  }
+
 
   getRandomProducts(){
     this.us.getProductApi().subscribe((products:any)=>{
@@ -75,7 +67,7 @@ export class SingleViewComponent implements OnInit{
   }
 
   addToBag(){
-    const base64Image = 'data:' + this.product.image.type + ';base64,' + this.arrayBufferToBase64(this.product.image.data.data);
+    const base64Image = 'data:' + this.product.image.type + ';base64,' + this.product.image.data;
 
     const item: CartProduct = {
       productId: this.product._id,

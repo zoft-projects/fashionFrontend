@@ -38,7 +38,7 @@ export const cartReducer = createReducer(
 
   on(removeFromCart, (state, { productId }) => {
     const updatedItems = state.items.filter((item) => item.productId !== productId);
-    localStorage.setItem('cart', JSON.stringify(updatedItems)); // Persist updated cart
+    localStorage.setItem('cart', JSON.stringify(updatedItems)); 
     return { ...state, items: updatedItems };
   }),
   on(clearCart,()=>{

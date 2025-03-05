@@ -15,7 +15,7 @@
                             <div class="card mb-3" style="max-width: 540px;">
                                 <div class="row g-0">
                                   <div class="col-md-4 p-3">
-                                    <img [src]="'data:' + product.image.type + ';base64,' + arrayBufferToBase64(product.image.data.data)" class="img-fluid rounded-start" alt="...">
+                                    <img [src]="'data:' + product.image.type + ';base64,' + product.image.data" class="img-fluid rounded-start" alt="...">
                                   </div>
                                   <div class="col-md-8">
                                     <div class="card-body">
